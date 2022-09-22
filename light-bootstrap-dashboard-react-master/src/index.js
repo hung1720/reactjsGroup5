@@ -26,15 +26,15 @@ import "./assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
 import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import LoginLayout from "pages/Homepage/Homepage.js";
+import Homepagelayout from "pages/Homepage/Homepage.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/login" render={() => <LoginLayout />} />
-      <Redirect from="/" to="/login" />
+      <Route path="/homepage" render={() => <Homepagelayout />} />
+      <Redirect from="/" to="/homepage" />
     </Switch>
   </BrowserRouter>
 );
