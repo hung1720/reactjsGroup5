@@ -32,9 +32,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/homepage" render={() => <Homepagelayout />} />
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/admin" render={() => <AdminLayout />} />
+      <Route
+        path="/homepage"
+        render={(props) => <Homepagelayout {...props} />}
+      />
+      <Redirect from="/" to="/homepage" />
     </Switch>
   </BrowserRouter>
 );

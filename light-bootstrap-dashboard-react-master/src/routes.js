@@ -25,6 +25,8 @@ import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
 import Mentor from "pages/Mentor/Mentor.js";
 import Mentee from "pages/Mentee/Mentee.js";
+import Message from "pages/Message/Message.js";
+import Profile from "pages/Profile/Profile.js";
 const dashboardRoutes = [
   // {
   //   upgrade: true,
@@ -53,6 +55,20 @@ const dashboardRoutes = [
     name: "Mentee",
     icon: "nc-icon nc-chart-pie-35",
     component: Mentee,
+    layout: "/admin",
+  },
+  {
+    path: "/message",
+    name: "Message",
+    icon: "nc-icon nc-chart-pie-35",
+    component: Message,
+    layout: "/admin",
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    icon: "nc-icon nc-chart-pie-35",
+    component: Profile,
     layout: "/admin",
   },
   // {
