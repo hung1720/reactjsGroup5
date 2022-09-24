@@ -1,5 +1,6 @@
 import React from "react";
 import "assets/css/modal.css";
+import { NavLink } from "react-router-dom";
 function Modal({ closeModal }) {
   return (
     <div className="modalBackground">
@@ -19,7 +20,9 @@ function Modal({ closeModal }) {
           <button onClick={() => closeModal(false)} id="cancelBtn">
             Canel
           </button>
-          <button>Login</button>
+          <button>
+            <NavLink to="/admin/mentee">login</NavLink>
+          </button>
         </div>
       </div>
     </div>

@@ -25,16 +25,29 @@ import "./assets/css/animate.min.css";
 import "./assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
 import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import AdminLayout from "layouts/Admin.js";
 import Homepagelayout from "pages/Homepage/Homepage.js";
-
+import Mentee from "pages/Mentee/Mentee";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//hello
 root.render(
   <BrowserRouter>
     <Switch>
       <Route path="/homepage" render={() => <Homepagelayout />} />
-      <Redirect from="/" to="/homepage" />
+      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Redirect from="/" to="/admin/dashboard" />
     </Switch>
   </BrowserRouter>
 );
+
+// import AdminLayout from "layouts/Admin.js";
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// root.render(
+//   <BrowserRouter>
+//     <Switch>
+//       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+//       <Redirect from="/" to="/admin/dashboard" />
+//     </Switch>
+//   </BrowserRouter>
+// );
