@@ -32,7 +32,7 @@ function Sidebar({ color, image, routes }) {
       <div
         className="sidebar-background"
         style={{
-          backgroundImage: "url(" + image + ")"
+          backgroundImage: "url(" + image + ")",
         }}
       />
       <div className="sidebar-wrapper">
@@ -49,7 +49,7 @@ function Sidebar({ color, image, routes }) {
             Creative Tim
           </a>
         </div>
-        <Nav>
+        {/* <Nav>
           {routes.map((prop, key) => {
             if (!prop.redirect)
               return (
@@ -73,7 +73,7 @@ function Sidebar({ color, image, routes }) {
               );
             return null;
           })}
-        </Nav>
+        </Nav> */}
       </div>
     </div>
   );
