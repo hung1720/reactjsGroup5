@@ -52,5 +52,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "scripts": {
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "npm": "5.6.0",
+    "node": "8.10.0"
   }
 }
