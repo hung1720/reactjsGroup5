@@ -20,6 +20,8 @@ import Mentor from "pages/Mentor/Mentor.js";
 import Mentee from "pages/Mentee/Mentee.js";
 import Message from "pages/Message/Message.js";
 import Profile from "pages/Profile/Profile.js";
+import MentorSlotPage from "pages/MentorSlotPage/MentorSlotPage.js";
+import { Route } from "react-router";
 const dashboardRoutes = [
   {
     path: "/mentor",
@@ -47,6 +49,13 @@ const dashboardRoutes = [
     name: "Profile",
     icon: "nc-icon nc-chart-pie-35",
     component: Profile,
+    layout: "/admin",
+  },
+  {
+    path: "/mentor-slot-page",
+    name: "MentorSlotPage",
+    icon: "nc-icon nc-chart-pie-35",
+    component: MentorSlotPage,
     layout: "/admin",
   },
 ];
