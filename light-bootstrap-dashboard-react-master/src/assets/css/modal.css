@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #cccc url(../img/modal.jpg) center no-repeat;
+  background: #cccc url(../img/wolfBackground.jpg) center no-repeat ;
 }
 
 .modalContainer {

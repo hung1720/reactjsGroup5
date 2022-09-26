@@ -49,7 +49,7 @@ function Sidebar({ color, image, routes }) {
             Quang Hung
           </a>
         </div>
-        {/* <Nav>
+        <Nav>
           {routes.map((prop, key) => {
             if (!prop.redirect)
               return (
@@ -73,7 +73,7 @@ function Sidebar({ color, image, routes }) {
               );
             return null;
           })}
-        </Nav> */}
+        </Nav>
       </div>
     </div>
   );

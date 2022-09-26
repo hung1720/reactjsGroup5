@@ -15,19 +15,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Dashboard from "views/Dashboard.js";
+
 import Mentor from "pages/Mentor/Mentor.js";
 import Mentee from "pages/Mentee/Mentee.js";
 import Message from "pages/Message/Message.js";
 import Profile from "pages/Profile/Profile.js";
 const dashboardRoutes = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "nc-icon nc-chart-pie-35",
-    component: Dashboard,
-    layout: "/admin",
-  },
   {
     path: "/mentor",
     name: "Mentor",

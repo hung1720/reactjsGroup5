@@ -3,7 +3,7 @@ import React from "react";
 function Mentor() {
   return (
     <div>
-      <h2>Hello worlds</h2>
+      <h2>Mentor page</h2>
     </div>
   );
 }
