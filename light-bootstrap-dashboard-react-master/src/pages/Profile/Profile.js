@@ -3,7 +3,7 @@ import React from "react";
 function Profile() {
   return (
     <div>
-      <h2>Profile page</h2>
+      <h2>sua vao day</h2>
     </div>
   );
 }
