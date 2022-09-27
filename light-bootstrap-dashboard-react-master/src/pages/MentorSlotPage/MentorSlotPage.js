@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import AddForm from "./AddForm";
 import { useState } from "react";
-
+import MentorslotPageTable from "components/MentorSlotPage/MentorSlotPageTable";
 function MentorSlotPage() {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -15,6 +15,7 @@ function MentorSlotPage() {
         <Button onClick={handleShow} variant="outline-success">
           Create slot
         </Button>
+        <MentorslotPageTable />
       </header>
 
       <Modal show={show} onHide={handleClose}>
