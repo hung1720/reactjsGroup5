@@ -4,7 +4,7 @@ import { getPosts } from "components/MentorSlotPage/MentorSlotPageTableSlice.js"
 import "components/MentorSlotPage/MentorSlotPageTable.css"
 
 function MentorSlotPageTable() {
-  const { posts, loading } = useSelector((state) => state.post);
+  const { posts, loading } = useSelector((state) => state.post); // Du lieu dang array
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
