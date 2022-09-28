@@ -8,8 +8,6 @@ import {
   CardBody,
   CardImage,
   Btn,
-  Breadcrumb,
-  BreadcrumbItem,
   Progress,
   ProgressBar,
   Icon,
