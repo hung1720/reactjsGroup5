@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
   return fetch(
-    "https://6331a1443ea4956cfb635d5f.mockapi.io/api/test/SlotList"
+    "https://6331a1443ea4956cfb635d5f.mockapi.io/api/test/SlotList" //lấy các cột từ slot của mentor
   ).then((res) => res.json());
 });
 
