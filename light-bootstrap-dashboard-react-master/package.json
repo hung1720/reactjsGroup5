@@ -3,19 +3,30 @@
   "version": "2.0.1",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.2",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@y0c/react-datepicker": "^1.0.4",
+    "axios": "^0.27.2",
     "bootstrap": "4.6.0",
     "chartist": "0.11.4",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
+    "mdb-react-ui-kit": "^4.2.0",
+    "namor": "^2.0.4",
+    "query-string": "^7.1.1",
     "react": "18.2.0",
-    "reactstrap": "8.8.1",
     "react-bootstrap": "2.4.0",
     "react-chartist": "0.14.4",
+    "react-date-range": "^1.4.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-notification-alert": "0.0.13",
+    "react-redux": "^8.0.4",
     "react-router": "5.2.0",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
+    "reactstrap": "8.8.1",
+    "redux": "^4.2.0",
     "sass": "1.53.0"
   },
   "optionalDependencies": {
@@ -27,10 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "compile:scss": "sass src/assets/scss/light-bootstrap-dashboard-pro-react.scss src/assets/css/light-bootstrap-dashboard-pro-react.css",
-    "minify:scss": "sass src/assets/scss/light-bootstrap-dashboard-pro-react.scss src/assets/css/light-bootstrap-dashboard-pro-react.min.css --style compressed",
-    "build:scss": "npm run compile:scss && npm run minify:scss"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -48,4 +56,6 @@
       "last 1 safari version"
     ]
   }
+
+
 }
