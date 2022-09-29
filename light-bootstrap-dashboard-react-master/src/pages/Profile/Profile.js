@@ -13,7 +13,7 @@ import {
   Icon,
   ListGroup,
   ListGroupItem
-} from 'mdb-react-ui-kit';
+} from 'light-bootstrap-dashboard-react';
 
 function Profile() {
   return (
