@@ -16,10 +16,10 @@ function MentorSlotPageTable() {
       <MDBTableHead>
           <tr className='table-danger'>
             <th scope='col'>id</th>
+            <th scope='col'>nameSlot</th>
             <th scope='col'>major</th>
             <th scope='col'>timeSlot</th>
             <th scope='col'>Decription</th>
-            <th scope='col'>nameSlot</th>
           </tr>
           </MDBTableHead>
           <MDBTableBody>
@@ -27,10 +27,10 @@ function MentorSlotPageTable() {
       return (
         <tr key={item.id}>
           <td>{ item.id }</td>
+          <td>{ item.nameSlot }</td>
           <td>{ item.major }</td>
           <td>{ item.timeSlot }</td>
           <td>{ item.Decription }</td>
-          <td>{ item.nameSlot }</td>
         </tr>
       );
     })}

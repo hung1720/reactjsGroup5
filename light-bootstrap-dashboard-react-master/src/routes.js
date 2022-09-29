@@ -15,7 +15,6 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-
 import Mentor from "pages/Mentor/Mentor.js";
 import Mentee from "pages/Mentee/Mentee.js";
 import Message from "pages/Message/Message.js";
@@ -59,5 +58,4 @@ const dashboardRoutes = [
     layout: "/admin",
   },
 ];
-
 export default dashboardRoutes;
