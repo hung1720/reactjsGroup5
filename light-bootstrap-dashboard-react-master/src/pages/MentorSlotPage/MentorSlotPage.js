@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import AddForm from "./AddForm";
 import { useState } from "react";
 import MentorslotPageTable from "components/MentorSlotPage/MentorSlotPageTable";
+import "@progress/kendo-theme-default/dist/all.css";
 function MentorSlotPage() {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -12,13 +13,13 @@ function MentorSlotPage() {
   return (
     <>
       <header>
-        <Button onClick={handleShow} variant="outline-success">
+        {/* <Button onClick={handleShow} variant="outline-success">
           Create slot
-        </Button>
+        </Button> */}
         <MentorslotPageTable />
       </header>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title></Modal.Title>{" "}
         </Modal.Header>
@@ -30,7 +31,7 @@ function MentorSlotPage() {
             Close Button
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

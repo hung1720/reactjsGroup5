@@ -3,6 +3,22 @@
   "version": "2.0.1",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.2",
+    "@progress/kendo-date-math": "^1.5.8",
+    "@progress/kendo-drawing": "^1.17.1",
+    "@progress/kendo-licensing": "^1.2.2",
+    "@progress/kendo-react-animation": "^5.7.0",
+    "@progress/kendo-react-buttons": "^5.7.0",
+    "@progress/kendo-react-common": "^5.7.0",
+    "@progress/kendo-react-dateinputs": "^5.7.0",
+    "@progress/kendo-react-dialogs": "^5.7.0",
+    "@progress/kendo-react-dropdowns": "^5.7.0",
+    "@progress/kendo-react-form": "^5.7.0",
+    "@progress/kendo-react-inputs": "^5.7.0",
+    "@progress/kendo-react-intl": "^5.7.0",
+    "@progress/kendo-react-popup": "^5.7.0",
+    "@progress/kendo-react-scheduler": "^5.7.0",
+    "@progress/kendo-react-treeview": "^5.7.0",
+    "@progress/kendo-theme-default": "^5.8.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@y0c/react-datepicker": "^1.0.4",
     "axios": "^0.27.2",
@@ -13,12 +29,12 @@
     "mdb-react-ui-kit": "^4.2.0",
     "namor": "^2.0.4",
     "query-string": "^7.1.1",
-    "react": "18.2.0",
+    "react": ">=16.8.0",
     "react-bootstrap": "2.4.0",
     "react-chartist": "0.14.4",
     "react-date-range": "^1.4.0",
     "react-datepicker": "^4.8.0",
-    "react-dom": "18.2.0",
+    "react-dom": ">=16.8.0",
     "react-notification-alert": "0.0.13",
     "react-redux": "^8.0.4",
     "react-router": "5.2.0",
@@ -56,6 +72,4 @@
       "last 1 safari version"
     ]
   }
-
-
 }
