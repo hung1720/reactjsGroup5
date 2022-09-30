@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import MaterialUIDateRange from "./MaterialUiDateRange";
+
 const AddForm = () => {
   return (
     <Form>
@@ -25,7 +25,9 @@ const AddForm = () => {
         <Form.Control type="text" placeholder="Phone"></Form.Control>
       </Form.Group>
       <Button variant="success">Add New Slot</Button>
-      <Button><MaterialUIDateRange /></Button>
+      <Button>
+        <MaterialUIDateRange />
+      </Button>
     </Form>
   );
 };
