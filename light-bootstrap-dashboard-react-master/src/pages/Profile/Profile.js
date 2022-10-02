@@ -1,225 +1,215 @@
 import React from "react";
 
-// reactstrap components
+// react-bootstrap components
 import {
+  Badge,
   Button,
-  NavItem,
-  NavLink,
+  Card,
+  Form,
+  Navbar,
   Nav,
-  TabContent,
-  TabPane,
   Container,
   Row,
-  Col,
-  UncontrolledTooltip
-} from "reactstrap";
+  Col
+} from "react-bootstrap";
 
-// core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
-
-function ProfilePage() {
-  const [pills, setPills] = React.useState("2");
-  React.useEffect(() => {
-    document.body.classList.add("profile-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    return function cleanup() {
-      document.body.classList.remove("profile-page");
-      document.body.classList.remove("sidebar-collapse");
-    };
-  }, []);
+function User() {
   return (
     <>
-      <ExamplesNavbar />
-      <div className="wrapper">
-        <ProfilePageHeader />
-        <div className="section">
-          <Container>
-            <div className="button-container">
-              <Button className="btn-round" color="info" size="lg">
-                Follow
-              </Button>
-              <Button
-                className="btn-round btn-icon"
-                color="default"
-                id="tooltip515203352"
-                size="lg"
-              >
-                <i className="fab fa-twitter"></i>
-              </Button>
-              <UncontrolledTooltip delay={0} target="tooltip515203352">
-                Follow me on Twitter
-              </UncontrolledTooltip>
-              <Button
-                className="btn-round btn-icon"
-                color="default"
-                id="tooltip340339231"
-                size="lg"
-              >
-                <i className="fab fa-instagram"></i>
-              </Button>
-              <UncontrolledTooltip delay={0} target="tooltip340339231">
-                Follow me on Instagram
-              </UncontrolledTooltip>
-            </div>
-            <h3 className="title">About me</h3>
-            <h5 className="description">
-              An artist of considerable range, Ryan — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure. An artist of considerable range.
-            </h5>
-            <Row>
-              <Col className="ml-auto mr-auto" md="6">
-                <h4 className="title text-center">My Portfolio</h4>
-                <div className="nav-align-center">
-                  <Nav
-                    className="nav-pills-info nav-pills-just-icons"
-                    pills
-                    role="tablist"
+      <Container fluid>
+        <Row>
+          <Col md="8">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Edit Profile</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Form>
+                  <Row>
+                    <Col className="pr-1" md="5">
+                      <Form.Group>
+                        <label>Company (disabled)</label>
+                        <Form.Control
+                          defaultValue="Creative Code Inc."
+                          disabled
+                          placeholder="Company"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-1" md="3">
+                      <Form.Group>
+                        <label>Username</label>
+                        <Form.Control
+                          defaultValue="michael23"
+                          placeholder="Username"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label htmlFor="exampleInputEmail1">
+                          Email address
+                        </label>
+                        <Form.Control
+                          placeholder="Email"
+                          type="email"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="6">
+                      <Form.Group>
+                        <label>First Name</label>
+                        <Form.Control
+                          defaultValue="Mike"
+                          placeholder="Company"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="6">
+                      <Form.Group>
+                        <label>Last Name</label>
+                        <Form.Control
+                          defaultValue="Andrew"
+                          placeholder="Last Name"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>Address</label>
+                        <Form.Control
+                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                          placeholder="Home Address"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>City</label>
+                        <Form.Control
+                          defaultValue="Mike"
+                          placeholder="City"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-1" md="4">
+                      <Form.Group>
+                        <label>Country</label>
+                        <Form.Control
+                          defaultValue="Andrew"
+                          placeholder="Country"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label>Postal Code</label>
+                        <Form.Control
+                          placeholder="ZIP Code"
+                          type="number"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>About Me</label>
+                        <Form.Control
+                          cols="80"
+                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
+                          that two seat Lambo."
+                          placeholder="Here can be your description"
+                          rows="4"
+                          as="textarea"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Button
+                    className="btn-fill pull-right"
+                    type="submit"
+                    variant="info"
                   >
-                    <NavItem>
-                      <NavLink
-                        className={pills === "1" ? "active" : ""}
-                        href="#pablo"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setPills("1");
-                        }}
-                      >
-                        <i className="now-ui-icons design_image"></i>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={pills === "2" ? "active" : ""}
-                        href="#pablo"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setPills("2");
-                        }}
-                      >
-                        <i className="now-ui-icons location_world"></i>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={pills === "3" ? "active" : ""}
-                        href="#pablo"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setPills("3");
-                        }}
-                      >
-                        <i className="now-ui-icons sport_user-run"></i>
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
+                    Update Profile
+                  </Button>
+                  <div className="clearfix"></div>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card className="card-user">
+              <div className="card-image">
+                <img
+                  alt="..."
+                  src={require("assets/img/photo-1431578500526-4d9613015464.jpeg")}
+                ></img>
+              </div>
+              <Card.Body>
+                <div className="author">
+                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                    <img
+                      alt="..."
+                      className="avatar border-gray"
+                      src={require("assets/img/faces/face-3.jpg")}
+                    ></img>
+                    <h5 className="title">Mike Andrew</h5>
+                  </a>
+                  <p className="description">michael24</p>
                 </div>
-              </Col>
-              <TabContent className="gallery" activeTab={"pills" + pills}>
-                <TabPane tabId="pills1">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
-                      </Col>
-                    </Row>
-                  </Col>
-                </TabPane>
-                <TabPane tabId="pills2">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg11.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
-                      </Col>
-                    </Row>
-                  </Col>
-                </TabPane>
-                <TabPane tabId="pills3">
-                  <Col className="ml-auto mr-auto" md="10">
-                    <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
-                        ></img>
-                      </Col>
-                    </Row>
-                  </Col>
-                </TabPane>
-              </TabContent>
-            </Row>
-          </Container>
-        </div>
-        <DefaultFooter />
-      </div>
+                <p className="description text-center">
+                  "Lamborghini Mercy <br></br>
+                  Your chick she so thirsty <br></br>
+                  I'm in that two seat Lambo"
+                </p>
+              </Card.Body>
+              <hr></hr>
+              <div className="button-container mr-auto ml-auto">
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-facebook-square"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-twitter"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-google-plus-square"></i>
+                </Button>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
 
-export default ProfilePage;
+export default User;
