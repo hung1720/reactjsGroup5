@@ -1,191 +1,212 @@
 import React from "react";
+
+// react-bootstrap components
 import {
-  Col,
+  Button,
+  Card,
+  Form,
   Container,
   Row,
-  Card,
-  CardText,
-  CardBody,
-  CardImage,
-  Btn,
-  Progress,
-  ProgressBar,
-  Icon,
-  ListGroup,
-  ListGroupItem
-} from 'light-bootstrap-dashboard-react';
+  Col
+} from "react-bootstrap";
 
 function Profile() {
   return (
-    <section style={{ backgroundColor: '#eee' }}>
-      <Container className="py-5">
+    <>
+      <Container fluid>
         <Row>
-          <Col>
-           {/* ///head/ */}
+          <Col md="8">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Edit Profile</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Form>
+                  <Row>
+                    <Col className="pr-1" md="5">
+                      <Form.Group>
+                        <label>Company (disabled)</label>
+                        <Form.Control
+                          defaultValue="Creative Code Inc."
+                          disabled
+                          placeholder="Company"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-1" md="3">
+                      <Form.Group>
+                        <label>Username</label>
+                        <Form.Control
+                          defaultValue="Kh"
+                          placeholder="Username"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label htmlFor="exampleInputEmail1">
+                          Email address
+                        </label>
+                        <Form.Control
+                          placeholder="Email"
+                          type="email"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="6">
+                      <Form.Group>
+                        <label>First Name</label>
+                        <Form.Control
+                          defaultValue="KHan"
+                          placeholder="Company"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="6">
+                      <Form.Group>
+                        <label>Last Name</label>
+                        <Form.Control
+                          defaultValue="HUng"
+                          placeholder="Last Name"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>Address</label>
+                        <Form.Control
+                          defaultValue="15 Nguyeh Van linh, Q9"
+                          placeholder="Address"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>City</label>
+                        <Form.Control
+                          defaultValue="KHan"
+                          placeholder="City"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-1" md="4">
+                      <Form.Group>
+                        <label>Country</label>
+                        <Form.Control
+                          defaultValue="HCM"
+                          placeholder="Country"
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label>Postal Code</label>
+                        <Form.Control
+                          placeholder="ZIP Code"
+                          type="number"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>About Me</label>
+                        <Form.Control
+                          cols="80"
+                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
+                          that two seat Lambo."
+                          placeholder="Here can be your description"
+                          rows="4"
+                          as="textarea"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Button
+                    className="btn-fill pull-right"
+                    type="submit"
+                    variant="info"
+                  >
+                    Update Profile
+                  </Button>
+                  <div className="clearfix"></div>
+                </Form>
+              </Card.Body>
+            </Card>
           </Col>
-        </Row>
-
-        <Row>
-          <Col lg="4">
-            <Card className="mb-4">
-              <CardBody className="text-center">
-                <CardImage
-                  src="https://znews-photo.zingcdn.me/w660/Uploaded/neg_yslewlx/2022_09_23/rs_1200x1200_220922081746_1200_J_1.jpg"
-                  alt="avatar"
-                  className="rounded-circle"
-                  style={{ width: '150px' }}
-                  fluid />
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">VN</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <Btn>Follow</Btn>
-                  <Btn>MESSAGE</Btn>
+          <Col md="4">
+            <Card className="card-user">
+              <div className="card-image">
+                <img
+                  alt="..."
+                  src={require("assets/img/photo-1431578500526-4d9613015464.jpeg")}
+                ></img>
+              </div>
+              <Card.Body>
+                <div className="author">
+                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                    <img
+                      alt="..."
+                      className="avatar border-gray"
+                      src={require("assets/img/faces/face-3.jpg")}
+                    ></img>
+                    <h5 className="title">Mike Andrew</h5>
+                  </a>
+                  <p className="description">michael24</p>
                 </div>
-              </CardBody>
+                <p className="description text-center">
+                  "Lamborghini Mercy <br></br>
+                  Your chick she so thirsty <br></br>
+                  I'm in that two seat Lambo"
+                </p>
+              </Card.Body>
+              <hr></hr>
+              <div className="button-container mr-auto ml-auto">
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-facebook-square"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-twitter"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-google-plus-square"></i>
+                </Button>
+              </div>
             </Card>
-
-            <Card className="mb-4 mb-lg-0">
-              <CardBody className="p-0">
-                <ListGroup flush className="rounded-3">
-                  <ListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <Icon fas icon="globe fa-lg text-warning" />
-                    <CardText>khang.com</CardText>
-                  </ListGroupItem>
-                  <ListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <Icon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <CardText>khang</CardText>
-                  </ListGroupItem>
-                  <ListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <Icon fab icon="fa-solid fa-envelope" style={{ color: '#55acee' }} />
-                    <CardText></CardText>
-                  </ListGroupItem>          
-                  <ListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <Icon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
-                    <CardText>HKhang</CardText>
-                  </ListGroupItem>
-                </ListGroup>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col lg="8">
-            <Card className="mb-4">
-              <CardBody>
-                <Row>
-                  <Col sm="3">
-                    <CardText>Full Name</CardText>
-                  </Col>
-                  <Col sm="9">
-                    <CardText className="text-muted">khang</CardText>
-                  </Col>
-                </Row>
-                <hr />
-                <Row>
-                  <Col sm="3">
-                    <CardText>Email</CardText>
-                  </Col>
-                  <Col sm="9">
-                    <CardText className="text-muted">khang@gmail.com</CardText>
-                  </Col>
-                </Row>
-                <hr />
-                <Row>
-                  <Col sm="3">
-                    <CardText>Phone</CardText>
-                  </Col>
-                  <Col sm="9">
-                    <CardText className="text-muted">0123456789</CardText>
-                  </Col>
-                </Row>
-                <hr />
-                <Row>
-                  <Col sm="3">
-                    <CardText>Job</CardText>
-                  </Col>
-                  <Col sm="9">
-                    <CardText className="text-muted">Professor</CardText>
-                  </Col>
-                </Row>
-                <hr />
-                <Row>
-                  <Col sm="3">
-                    <CardText>Address</CardText>
-                  </Col>
-                  <Col sm="9">
-                    <CardText className="text-muted">nguyen Van Linh</CardText>
-                  </Col>
-                </Row>
-              </CardBody>
-            </Card>
-
-            <Row>
-              <Col md="6">
-                <Card className="mb-4 mb-md-0">
-                  <CardBody>
-                    <CardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</CardText>
-                    <CardText className="mb-1" style={{ fontSize: '.77rem' }}>PE </CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={80} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}> JAVA</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={72} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>C#</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={89} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>C++</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={55} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>BE API</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={66} valuemin={0} valuemax={100} />
-                    </Progress>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col md="6">
-                <Card className="mb-4 mb-md-0">
-                  <CardBody>
-                    <CardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</CardText>
-                    <CardText className="mb-1" style={{ fontSize: '.77rem' }}></CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={80} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>GAME DEVELOP</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={72} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>MB</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={89} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>TESTER</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={55} valuemin={0} valuemax={100} />
-                    </Progress>
-
-                    <CardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>JS</CardText>
-                    <Progress className="rounded">
-                      <ProgressBar width={66} valuemin={0} valuemax={100} />
-                    </Progress>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
           </Col>
         </Row>
       </Container>
-    </section>
+    </>
   );
 }
+
 export default Profile;
