@@ -18,6 +18,8 @@
     "react-router": "5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
+    "react-select": "5.4.0",
+    "react-slideshow-image": "^1.4.0",
     "react-table": "^7.8.0",
     "reactstrap": "8.8.1",
     "redux": "^4.2.0",
@@ -26,6 +28,9 @@
   "optionalDependencies": {
     "jquery": "3.5.1",
     "typescript": "4.7.4"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,6 +1,10 @@
 import React from "react";
+import Select from 'react-select';
+import { Zoom } from 'react-slideshow-image';
+// import makeAnimated from 'react-select/animated';
+// import { colourOptions } from './docs/data';
 
-// react-bootstrap components
+
 import {
   Button,
   Card,
@@ -9,8 +13,58 @@ import {
   Row,
   Col
 } from "react-bootstrap";
+// const animatedComponents = makeAnimated();
+const skill = [
+  { label: "Python", value: 355 },
+  { label: "Ruby ", value: 54 },
+  { label: "Pascal", value: 43 },
+  { label: "C", value: 61 },
+  { label: "C#", value: 965 },
+  { label: "C++", value: 46 },
+  { label: "Objective-C", value: 58 },
+  { label: "Java", value: 58 },
+  { label: "JavaCript", value: 58 },
+  { label: "Swift", value: 58 },
+];
+const job = [
+  { label: "Computer Science", value: 355 },
+  { label: "Information Technology ", value: 54 },
+  { label: "Data Communication and Computer Network", value: 43 },
+  { label: "Computer Engineering", value: 61 },
+  { label: "Network Technology", value: 965 },
+  { label: "Software Engineering", value: 46 },
+  { label: "Management Information Systems", value: 58 },
+  { label: "Big Data & Machine Learning", value: 58 },
+  { label: "Game", value: 58 },
+  { label: "Graphic", value: 58 },
+  { label: "Multimedia Design", value: 58 },
+];
+const images = [
+  'images/mask.jpg',
+  'images/modal.jpg',
+  'images/slide_4.jpg',
+  'images/slide_5.jpg',
+  'images/slide_6.jpg',
+  'images/slide_7.jpg'
+];
+
+const zoomOutProperties = {
+  duration: 5000,
+  transitionDuration: 500,
+  infinite: true,
+  indicators: true,
+  scale: 0.4,
+  arrows: true
+}
 
 function Profile() {
+  // state = {
+  //   selectedOption: null,
+  // };
+  // handleChange = selectedOption => {
+  //   this.setState({ selectedOption });
+  //   console.log(`Option selected:`, selectedOption);
+  // };
   return (
     <>
       <Container fluid>
@@ -81,12 +135,54 @@ function Profile() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
+                        <label>Job</label>
+                        <Select options={job} isMulti />
+
+                      </Form.Group>
+                    </Col>
+                    <Col md="12">
+                      <Form.Group>
                         <label>Address</label>
                         <Form.Control
                           defaultValue="15 Nguyeh Van linh, Q9"
                           placeholder="Address"
                           type="text"
                         ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>Skill</label>
+                        <Select options={skill} isMulti />
+                        {/* <Form.Control defaultValue="15 Nguyeh Van linh, Q9" placeholder="Skill" type="text">
+                        </Form.Control> */}
+                        {/* <Select
+                          isMulti={true}
+                          value={selectedOption}
+                          onChange={this.handleChange}
+                          options={options}
+                        />
+                        {this.state.selectedOption.length ? (
+                          <div>
+                            <h3>Selected Cars</h3>
+                            <ul>
+                              {this.state.selectedOption.map((option) =>
+                                <li key={option.value}>
+                                  {option.label}
+                                </li>
+                              )}
+                            </ul>
+                          </div>) : ''
+                        } */}
+                        {/* <Select
+                          closeMenuOnSelect={false}
+                          components={animatedComponents}
+                          defaultValue={[colourOptions[4], colourOptions[5]]}
+                          isMulti
+                          options={colourOptions}
+                        /> */}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -127,8 +223,7 @@ function Profile() {
                         <label>About Me</label>
                         <Form.Control
                           cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                          that two seat Lambo."
+                          defaultValue="Tui la thay giao day cac mon hojc."
                           placeholder="Here can be your description"
                           rows="4"
                           as="textarea"
@@ -162,16 +257,16 @@ function Profile() {
                     <img
                       alt="..."
                       className="avatar border-gray"
-                      src={require("assets/img/faces/face-3.jpg")}
+                      src={require("assets/img/faces/avata.jpg")}
                     ></img>
-                    <h5 className="title">Mike Andrew</h5>
+                    <h5 className="title">HUng KHan</h5>
                   </a>
-                  <p className="description">michael24</p>
+                  <p className="description">KHan</p>
                 </div>
                 <p className="description text-center">
-                  "Lamborghini Mercy <br></br>
-                  Your chick she so thirsty <br></br>
-                  I'm in that two seat Lambo"
+                  "Toi la thay giao <br></br>
+                  dink cua dink <br></br>
+                  top cua top"
                 </p>
               </Card.Body>
               <hr></hr>
@@ -202,8 +297,25 @@ function Profile() {
                 </Button>
               </div>
             </Card>
+            <Card className="card-user">
+              <Zoom {...zoomOutProperties}>
+                {
+                  images.map((each, index) => <img key={index} style={{ width: "100%" }} src={each} />)
+                }
+              </Zoom>
+              <Button
+                    className="btn-fill pull-right"
+                    type="submit"
+                    variant="info"
+                  >
+                    Update Images
+                  </Button>
+              <hr></hr>
+            </Card>
           </Col>
+
         </Row>
+
       </Container>
     </>
   );
