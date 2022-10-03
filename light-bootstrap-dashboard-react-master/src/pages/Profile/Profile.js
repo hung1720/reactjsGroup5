@@ -40,12 +40,10 @@ const job = [
   { label: "Multimedia Design", value: 58 },
 ];
 const images = [
-  'images/mask.jpg',
+  'images/new_logo.png',
   'images/modal.jpg',
-  'images/slide_4.jpg',
-  'images/slide_5.jpg',
-  'images/slide_6.jpg',
-  'images/slide_7.jpg'
+  'images/sidebar-4.jpg',
+  'images/sidebar-3.jpg',
 ];
 
 const zoomOutProperties = {
