@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import AddForm from "./AddForm";
 import { useState } from "react";
 import MentorslotPageTable from "components/MentorSlotPage/MentorSlotPageTable";
 import "@progress/kendo-theme-default/dist/all.css";
