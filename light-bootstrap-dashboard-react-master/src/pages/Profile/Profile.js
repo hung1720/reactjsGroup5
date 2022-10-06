@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from 'react-select';
 import { Zoom } from 'react-slideshow-image';
 // import makeAnimated from 'react-select/animated';
@@ -26,6 +26,8 @@ const skill = [
   { label: "JavaCript", value: 58 },
   { label: "Swift", value: 58 },
 ];
+
+
 const job = [
   { label: "Computer Science", value: 355 },
   { label: "Information Technology ", value: 54 },
@@ -56,13 +58,57 @@ const zoomOutProperties = {
 }
 
 function Profile() {
-  // state = {
-  //   selectedOption: null,
-  // };
-  // handleChange = selectedOption => {
-  //   this.setState({ selectedOption });
-  //   console.log(`Option selected:`, selectedOption);
-  // };
+
+
+  const [selectedValue, setSelectedValue] = useState([]);
+
+  const handleChange = (e) => {
+    setSelectedValue(Array.isArray(e) ? e.map(x => x.value) : []);
+  }
+
+//   const handleForm = (e) => {
+//     e.preventDefault();
+//     fetch('https://633d63337e19b178290d5d5b.mockapi.io/profile', {
+//   method: 'POST', // or 'PUT'
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(data),
+// })
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log('Success:', data);
+//   })
+//   .catch((error) => {
+//     console.error('Error:', error);
+//   });
+//   }
+
+  const handleFormSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://httpbin.org/post", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          mobileNumber: mobileNumber,
+        }),
+      });
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setName("");
+        setEmail("");
+        setMessage("User created successfully");
+      } else {
+        setMessage("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
   return (
     <>
       <Container fluid>
@@ -89,7 +135,7 @@ function Profile() {
                     <Col className="px-1" md="3">
                       <Form.Group>
                         <label>Username</label>
-                        <Form.Control
+                        <Form.Control value={username}
                           defaultValue="Kh"
                           placeholder="Username"
                           type="text"
@@ -101,7 +147,7 @@ function Profile() {
                         <label htmlFor="exampleInputEmail1">
                           Email address
                         </label>
-                        <Form.Control
+                        <Form.Control value={email}
                           placeholder="Email"
                           type="email"
                         ></Form.Control>
@@ -112,7 +158,7 @@ function Profile() {
                     <Col className="pr-1" md="6">
                       <Form.Group>
                         <label>First Name</label>
-                        <Form.Control
+                        <Form.Control value={firstname}
                           defaultValue="KHan"
                           placeholder="Company"
                           type="text"
@@ -122,7 +168,7 @@ function Profile() {
                     <Col className="pl-1" md="6">
                       <Form.Group>
                         <label>Last Name</label>
-                        <Form.Control
+                        <Form.Control value={lastname}
                           defaultValue="HUng"
                           placeholder="Last Name"
                           type="text"
@@ -133,15 +179,20 @@ function Profile() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
-                        <label>Job</label>
-                        <Select options={job} isMulti />
-
+                        <label>Skill</label>
+                        {/* <Select options={job} isMulti /> */}
+                        <Select value={skill}
+                          label={skill.filter(obj => selectedValue.includes(obj.label))}
+                          options={skill} is isMulti
+                          onChange={handleChange}
+                        />
+                        {console.log(skill)}
                       </Form.Group>
                     </Col>
                     <Col md="12">
                       <Form.Group>
                         <label>Address</label>
-                        <Form.Control
+                        <Form.Control value={address}
                           defaultValue="15 Nguyeh Van linh, Q9"
                           placeholder="Address"
                           type="text"
@@ -152,35 +203,17 @@ function Profile() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
-                        <label>Skill</label>
-                        <Select options={skill} isMulti />
+                        <label>Job</label>
+                        {/* <Select options={skill} isMulti /> */}
+                        <Select value={job}
+                          label={job.filter(obj => selectedValue.includes(obj.label))}
+                          options={job} is isMulti
+                          onChange={handleChange}
+                        />
+                        {console.log(JSON.stringify(selectedValue, null, 2))}
                         {/* <Form.Control defaultValue="15 Nguyeh Van linh, Q9" placeholder="Skill" type="text">
                         </Form.Control> */}
-                        {/* <Select
-                          isMulti={true}
-                          value={selectedOption}
-                          onChange={this.handleChange}
-                          options={options}
-                        />
-                        {this.state.selectedOption.length ? (
-                          <div>
-                            <h3>Selected Cars</h3>
-                            <ul>
-                              {this.state.selectedOption.map((option) =>
-                                <li key={option.value}>
-                                  {option.label}
-                                </li>
-                              )}
-                            </ul>
-                          </div>) : ''
-                        } */}
-                        {/* <Select
-                          closeMenuOnSelect={false}
-                          components={animatedComponents}
-                          defaultValue={[colourOptions[4], colourOptions[5]]}
-                          isMulti
-                          options={colourOptions}
-                        /> */}
+
                       </Form.Group>
                     </Col>
                   </Row>
@@ -188,7 +221,7 @@ function Profile() {
                     <Col className="pr-1" md="4">
                       <Form.Group>
                         <label>City</label>
-                        <Form.Control
+                        <Form.Control value={city}
                           defaultValue="KHan"
                           placeholder="City"
                           type="text"
@@ -198,7 +231,7 @@ function Profile() {
                     <Col className="px-1" md="4">
                       <Form.Group>
                         <label>Country</label>
-                        <Form.Control
+                        <Form.Control value={country}
                           defaultValue="HCM"
                           placeholder="Country"
                           type="text"
@@ -208,7 +241,7 @@ function Profile() {
                     <Col className="pl-1" md="4">
                       <Form.Group>
                         <label>Postal Code</label>
-                        <Form.Control
+                        <Form.Control value={code}
                           placeholder="ZIP Code"
                           type="number"
                         ></Form.Control>
@@ -219,7 +252,7 @@ function Profile() {
                     <Col md="12">
                       <Form.Group>
                         <label>About Me</label>
-                        <Form.Control
+                        <Form.Control value={about}
                           cols="80"
                           defaultValue="Tui la thay giao day cac mon hojc."
                           placeholder="Here can be your description"
@@ -233,6 +266,7 @@ function Profile() {
                     className="btn-fill pull-right"
                     type="submit"
                     variant="info"
+                    onClick={handleForm}
                   >
                     Update Profile
                   </Button>
@@ -302,12 +336,12 @@ function Profile() {
                 }
               </Zoom>
               <Button
-                    className="btn-fill pull-right"
-                    type="submit"
-                    variant="info"
-                  >
-                    Update Images
-                  </Button>
+                className="btn-fill pull-right"
+                type="submit"
+                variant="info"
+              >
+                Update Images
+              </Button>
               <hr></hr>
             </Card>
           </Col>
