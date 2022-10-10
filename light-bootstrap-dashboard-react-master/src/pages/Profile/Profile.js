@@ -26,7 +26,7 @@ const skill = [
   { label: "JavaCript", value: 58 },
   { label: "Swift", value: 58 },
 ];
-
+///////
 
 const job = [
   { label: "Computer Science", value: 355 },
@@ -135,7 +135,7 @@ function Profile() {
                     <Col className="px-1" md="3">
                       <Form.Group>
                         <label>Username</label>
-                        <Form.Control value={username}
+                        <Form.Control 
                           defaultValue="Kh"
                           placeholder="Username"
                           type="text"
@@ -147,7 +147,7 @@ function Profile() {
                         <label htmlFor="exampleInputEmail1">
                           Email address
                         </label>
-                        <Form.Control value={email}
+                        <Form.Control 
                           placeholder="Email"
                           type="email"
                         ></Form.Control>
@@ -158,7 +158,7 @@ function Profile() {
                     <Col className="pr-1" md="6">
                       <Form.Group>
                         <label>First Name</label>
-                        <Form.Control value={firstname}
+                        <Form.Control 
                           defaultValue="KHan"
                           placeholder="Company"
                           type="text"
@@ -168,7 +168,7 @@ function Profile() {
                     <Col className="pl-1" md="6">
                       <Form.Group>
                         <label>Last Name</label>
-                        <Form.Control value={lastname}
+                        <Form.Control 
                           defaultValue="HUng"
                           placeholder="Last Name"
                           type="text"
@@ -181,7 +181,7 @@ function Profile() {
                       <Form.Group>
                         <label>Skill</label>
                         {/* <Select options={job} isMulti /> */}
-                        <Select value={skill}
+                        <Select
                           label={skill.filter(obj => selectedValue.includes(obj.label))}
                           options={skill} is isMulti
                           onChange={handleChange}
@@ -192,7 +192,7 @@ function Profile() {
                     <Col md="12">
                       <Form.Group>
                         <label>Address</label>
-                        <Form.Control value={address}
+                        <Form.Control 
                           defaultValue="15 Nguyeh Van linh, Q9"
                           placeholder="Address"
                           type="text"
@@ -205,7 +205,7 @@ function Profile() {
                       <Form.Group>
                         <label>Job</label>
                         {/* <Select options={skill} isMulti /> */}
-                        <Select value={job}
+                        <Select 
                           label={job.filter(obj => selectedValue.includes(obj.label))}
                           options={job} is isMulti
                           onChange={handleChange}
@@ -221,7 +221,7 @@ function Profile() {
                     <Col className="pr-1" md="4">
                       <Form.Group>
                         <label>City</label>
-                        <Form.Control value={city}
+                        <Form.Control 
                           defaultValue="KHan"
                           placeholder="City"
                           type="text"
@@ -231,7 +231,7 @@ function Profile() {
                     <Col className="px-1" md="4">
                       <Form.Group>
                         <label>Country</label>
-                        <Form.Control value={country}
+                        <Form.Control
                           defaultValue="HCM"
                           placeholder="Country"
                           type="text"
@@ -241,7 +241,7 @@ function Profile() {
                     <Col className="pl-1" md="4">
                       <Form.Group>
                         <label>Postal Code</label>
-                        <Form.Control value={code}
+                        <Form.Control 
                           placeholder="ZIP Code"
                           type="number"
                         ></Form.Control>
@@ -252,7 +252,7 @@ function Profile() {
                     <Col md="12">
                       <Form.Group>
                         <label>About Me</label>
-                        <Form.Control value={about}
+                        <Form.Control   
                           cols="80"
                           defaultValue="Tui la thay giao day cac mon hojc."
                           placeholder="Here can be your description"
@@ -266,7 +266,7 @@ function Profile() {
                     className="btn-fill pull-right"
                     type="submit"
                     variant="info"
-                    onClick={handleForm}
+                    // onClick={handleForm}
                   >
                     Update Profile
                   </Button>
