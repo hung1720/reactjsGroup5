@@ -17,7 +17,7 @@
 */
 
 import Profile from "pages/Profile/Profile.js";
-import { Route } from "react-router";
+
 const dashboardRoutes = [
   {
     path: "/profile",
