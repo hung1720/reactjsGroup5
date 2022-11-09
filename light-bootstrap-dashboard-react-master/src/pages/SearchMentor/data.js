@@ -1,6 +1,5 @@
 export const SEARCHDATA = [
   {
-    imgae: "assets/img/faces/avata.jpg",
     subject: "ReactJS",
     nameTeach: "Dominique Gomez",
     email: "alo@fpt.vn",
