@@ -11,23 +11,6 @@ import AdminLayout from "layouts/Admin.js";
 function Homepagelayout() {
   return (
     <div>
-      {/* <Router>
-        <AuthProvider>
-          <Switch>
-            <Route path="/admin" render={() => <AdminLayout />} />
-            <PrivateRoute exact path="/" component={Profile} />
-            <Container
-              className="d-flex align-items-center justify-content-center"
-              style={{ minHeight: "100vh" }}
-            >
-              <div className="w-100" style={{ maxWidth: "400px" }}>
-                <Route path="/homepage" component={Signup} />
-                <Route path="/login" component={Login} />
-              </div>
-            </Container>
-          </Switch>
-        </AuthProvider>
-      </Router> */}
       <Router>
         <AuthProvider>
           <Switch>

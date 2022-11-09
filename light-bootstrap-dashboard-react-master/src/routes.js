@@ -17,6 +17,7 @@
 */
 
 import Profile from "pages/Profile/Profile.js";
+import SearchMentor from "pages/SearchMentor/SearchMentor.js";
 
 const dashboardRoutes = [
   {
@@ -24,6 +25,13 @@ const dashboardRoutes = [
     name: "Profile",
     icon: "nc-icon nc-chart-pie-35",
     component: Profile,
+    layout: "/admin",
+  },
+  {
+    path: "/search-mentor",
+    name: "Search Mentor",
+    icon: "nc-icon nc-chart-pie-35",
+    component: SearchMentor,
     layout: "/admin",
   },
 ];

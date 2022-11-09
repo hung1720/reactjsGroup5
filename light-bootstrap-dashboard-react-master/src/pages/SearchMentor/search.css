@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+.search {
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-height: max-content;
+  padding-bottom: 10px;
+}
+
+.boxinput {
+  padding: 20px;
+  text-align: center;
+}
+
+.listItem {
+  padding: 5px;
+  border-left-color: aqua;
+  text-align: left;
+}
+
+.listItem txtsubject {
+  text-align: left;
+  padding: 10;
+  position: absolute;
+  left: 0;
+}
+
+.listItem btnAdd {
+  position: absolute;
+  right: 0;
+}
+.txtSubject {
+  text-align: center;
+}
+.btnprice {
+  font-family: Arial;
+  text-align: end;
+}

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "contexts/AuthContext";
 import { Link, useHistory, NavLink } from "react-router-dom";
+import { signInWithGoogle } from "firebase.js";
 
 export default function Login() {
   const emailRef = useRef();
@@ -44,6 +45,15 @@ export default function Login() {
             <Button disabled={loading} className="w-100" type="submit">
               Login
             </Button>
+            <Button
+              disabled={loading}
+              className="w-100"
+              type="submit"
+              onClick={signInWithGoogle}
+            >
+              {" "}
+              Sign In With Google
+            </Button>
           </Form>
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
@@ -51,7 +61,7 @@ export default function Login() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
+        Need an account? <Link to="/homepage">Sign Up</Link>
       </div>
     </>
   );

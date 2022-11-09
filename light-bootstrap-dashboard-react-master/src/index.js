@@ -8,7 +8,7 @@ import "./assets/css/animate.min.css";
 import "./assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
 import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import AdminLayout from "layouts/Admin.js";
+import AdminLayout from "layouts/Admin.js";
 import Homepagelayout from "pages/Homepage/Homepage.js";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import store from "./redux/store";
@@ -18,7 +18,7 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path="/admin" render={() => <AdminLayout />} />
+        <Route path="/admin" render={() => <AdminLayout />} />
         <Route
           path="/homepage"
           render={(props) => <Homepagelayout {...props} />}
