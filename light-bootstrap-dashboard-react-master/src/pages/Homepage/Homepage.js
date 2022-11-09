@@ -1,6 +1,6 @@
 import React from "react";
 import Signup from "components/Signup/Signup";
-import { Container } from "react-bootstrap";
+import { Breadcrumb, Container } from "react-bootstrap";
 import { AuthProvider } from "contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Profile from "pages/Profile/Profile";
@@ -11,10 +11,11 @@ import AdminLayout from "layouts/Admin.js";
 function Homepagelayout() {
   return (
     <div>
-      <Router>
+      {/* <Router>
         <AuthProvider>
           <Switch>
             <Route path="/admin" render={() => <AdminLayout />} />
+            <PrivateRoute exact path="/" component={Profile} />
             <Container
               className="d-flex align-items-center justify-content-center"
               style={{ minHeight: "100vh" }}
@@ -24,6 +25,15 @@ function Homepagelayout() {
                 <Route path="/login" component={Login} />
               </div>
             </Container>
+          </Switch>
+        </AuthProvider>
+      </Router> */}
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <Route path="/admin" render={() => <AdminLayout />} />
+            <Route path="/homepage" component={Signup} />
+            <Route path="/login" component={Login} />
           </Switch>
         </AuthProvider>
       </Router>
