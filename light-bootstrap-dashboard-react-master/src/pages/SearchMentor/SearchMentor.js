@@ -56,15 +56,6 @@ const SearchMentor = () => {
   }, []);
   return (
     <>
-      {/* {users.map((user) => {
-        return (
-          <div>
-            {""}
-            <h1>Name: {user.nameMentee}</h1>
-            <h1>Subject: {user.subject}</h1>
-          </div>
-        );
-      })} */}
       <div className="min-h-screen  ">
         <div className="search">
           <input
@@ -89,7 +80,6 @@ const SearchMentor = () => {
                 return (
                   <div key={index} className="listItem ">
                     <Card>
-                      {/* <Card.Img variant="left" src={require('assets/img/faces/avata.jpg')} /> */}
                       <Card.Header>
                         <h1 className="btnprice">
                           <Button variant="contained" color="inherit">
