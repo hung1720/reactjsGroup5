@@ -3,6 +3,8 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "contexts/AuthContext";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { signInWithGoogle } from "firebase.js";
+import { FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "firebase.js";
 
 export default function Login() {
   const emailRef = useRef();
@@ -11,6 +13,16 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const signInWithFacebook = () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    })
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -54,6 +66,8 @@ export default function Login() {
               {" "}
               Sign In With Google
             </Button>
+            <Button onClick={signInWithFacebook}>Sign in with FB</Button>
+            
           </Form>
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>

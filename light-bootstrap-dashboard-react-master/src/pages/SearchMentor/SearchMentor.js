@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { db } from "firebase.js";
 import { collection, getDocs } from "firebase/firestore";
 import "./search.css";
-import { SEARCHDATA } from "./data.js";
 import Button from "@mui/material/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Grid } from "@mui/material";
