@@ -63,14 +63,13 @@ export default function Login() {
               Login
             </Button>
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
+          <Form style={{ marginTop: "20px" }}>
+            <div className="w-100 text-center mt-2">
+              Need an account? <Link to="/homepage">Sign Up</Link>
+            </div>
+          </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/homepage">Sign Up</Link>
-      </div>
     </>
   );
 }
