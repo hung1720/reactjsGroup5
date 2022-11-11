@@ -1,7 +1,7 @@
 import Profile from "pages/Profile/Profile.js";
 import SearchMentor from "pages/SearchMentor/SearchMentor.js";
-import TestAPI from "pages/TestAPI/TestAPI.js";
 import CreateSlot from "pages/CreateSlot/CreateSlot.js";
+import ViewSlot from "pages/ViewSchedule/ViewSchedule.js";
 
 const dashboardRoutes = [
   {
@@ -19,17 +19,17 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/test-api",
-    name: "Test API",
+    path: "/create-slot",
+    name: "Create slot",
     icon: "nc-icon nc-chart-pie-35",
-    component: TestAPI,
+    component: CreateSlot,
     layout: "/admin",
   },
   {
-    path: "/create-slot",
-    name: "Create Slot",
+    path: "/view-slot",
+    name: "View Slot",
     icon: "nc-icon nc-chart-pie-35",
-    component: CreateSlot,
+    component: ViewSlot,
     layout: "/admin",
   },
 ];
