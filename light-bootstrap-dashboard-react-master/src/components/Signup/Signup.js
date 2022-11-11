@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth, AuthProvider } from "contexts/AuthContext";
-
 import { Link, useHistory, NavLink } from "react-router-dom";
 
 export default function Signup() {
@@ -34,7 +33,7 @@ export default function Signup() {
 
   return (
     <>
-      <Card>
+      <Card style={{ marginTop: "200px", marginLeft: "825px", width: "400px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -43,16 +42,21 @@ export default function Signup() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group id="password" style={{ marginTop: "20px" }}>
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Form.Group id="password-confirm">
+            <Form.Group id="password-confirm" style={{ marginTop: "20px" }}>
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100 " type="submit">
-              Sign up
+            <Button
+              style={{ marginTop: "30px" }}
+              disabled={loading}
+              className="w-100"
+              type="submit"
+            >
+              Sign Up
             </Button>
           </Form>
         </Card.Body>

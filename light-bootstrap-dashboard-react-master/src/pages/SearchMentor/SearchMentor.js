@@ -1,14 +1,17 @@
-import { async } from "@firebase/util";
-import { useState, useEffect } from "react";
-import { db } from "firebase.js";
-import { collection, getDocs } from "firebase/firestore";
+import { useState } from "react";
 import "./search.css";
+import { SEARCHDATA } from "./data.js";
 import Button from "@mui/material/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Grid } from "@mui/material";
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 import { Card, Form } from "react-bootstrap";
+// import { textAlign } from "@mui/system";
+// import { flex } from "tailwindcss-classnames";
 
-const SearchMentor = () => {
+function Search() {
   const [search, setSearch] = useState("");
   const [searchTimer, setSearchTimer] = useState();
   const [loading, setLoading] = useState(false);
@@ -44,65 +47,62 @@ const SearchMentor = () => {
       </div>
     );
   }
-
-  const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "users");
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUsers();
-  }, []);
   return (
-    <>
-      <div className="min-h-screen  ">
-        <div className="search">
-          <input
-            type="text"
-            name="search"
-            autoComplete="off"
-            placeholder="Search..."
-            className="border border-gray-500 w-full h-full rounded-md opacity-80 p-3"
-            onChange={updateSearch}
-          />
-          <Grid>
-            {users
-              .filter((data) => {
-                console.log("new request");
-                if (search === "") return data;
-                else if (
-                  data.subject.toLowerCase().includes(search.toLowerCase())
-                )
-                  return data;
-              })
-              .map((users, index) => {
-                return (
-                  <div key={index} className="listItem ">
-                    <Card>
-                      <Card.Header>
-                        <h1 className="btnprice">
-                          <Button variant="contained" color="inherit">
-                            {users.price}
-                          </Button>
-                        </h1>
-                        <b> {users.subject}</b>
-                      </Card.Header>
-                      <Card.Body>
-                        <p>
-                          Learn with - <b>{users.nameMentee}</b>{" "}
-                        </p>
-                        {users.email}
-                      </Card.Body>
-                    </Card>
-                  </div>
-                );
-              })}
-          </Grid>
-        </div>
+    <div className="min-h-screen  ">
+      <div className="search">
+        <input
+          type="text"
+          name="search"
+          autoComplete="off"
+          placeholder="Search..."
+          className="border border-gray-500 w-full h-full rounded-md opacity-80 p-3"
+          onChange={updateSearch}
+        />
+        <Grid>
+          {SEARCHDATA.filter((data) => {
+            console.log("new request");
+            if (search === "") return data;
+            else if (data.subject.toLowerCase().includes(search.toLowerCase()))
+              return data;
+            else if (data.nameTeach.includes(search)) return data;
+            else if (data.email.toLowerCase().includes(search.toLowerCase()))
+              return data;
+          }).map((data, index) => {
+            return (
+              <div key={index} className="listItem ">
+                <Card>
+                  {/* <Card.Img variant="left" src={require('assets/img/faces/avata.jpg')} /> */}
+                  <Card.Header>
+                    <h1 className="btnprice">
+                      <Button variant="contained" color="inherit">
+                        {data.price}
+                      </Button>
+                    </h1>
+                    <b> {data.subject}</b>
+                  </Card.Header>
+                  <Card.Body>
+                    <p>
+                      Learn with - <b>{data.nameTeach}</b>{" "}
+                    </p>
+                    {data.email}
+                  </Card.Body>
+                  {/* <div className="imge">{data.image}</div> */}
+                  {/* <div className="txtsubject">{data.subject}
+                                            <Button className="btnAdd" variant="contained" color="inherit">
+                                                {data.price}
+                                            </Button>
+                                        </div> */}
+                  {/* <div className="text-lg" md="2">
+                                            <div>Learn about - {data.nameTeach}</div></div>
+                                        <div className="text-sm">{data.email}</div> */}
+                </Card>
+              </div>
+            );
+          })}
+        </Grid>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default SearchMentor;
+export default Search;

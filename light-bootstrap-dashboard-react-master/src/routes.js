@@ -2,6 +2,7 @@ import Profile from "pages/Profile/Profile.js";
 import SearchMentor from "pages/SearchMentor/SearchMentor.js";
 import CreateSlot from "pages/CreateSlot/CreateSlot.js";
 import ViewSlot from "pages/ViewSchedule/ViewSchedule.js";
+import ListRequestMentee from "pages/ListRequestMetee/ListRequestMentee.js";
 
 const dashboardRoutes = [
   {
@@ -30,6 +31,13 @@ const dashboardRoutes = [
     name: "View Slot",
     icon: "nc-icon nc-chart-pie-35",
     component: ViewSlot,
+    layout: "/admin",
+  },
+  {
+    path: "/list-request-mentee",
+    name: "List request mentee",
+    icon: "nc-icon nc-chart-pie-35",
+    component: ListRequestMentee,
     layout: "/admin",
   },
 ];

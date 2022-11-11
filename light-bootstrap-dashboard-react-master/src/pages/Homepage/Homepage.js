@@ -7,6 +7,7 @@ import Profile from "pages/Profile/Profile";
 import Login from "components/Login/Login";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import AdminLayout from "layouts/Admin.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Homepagelayout() {
   return (
