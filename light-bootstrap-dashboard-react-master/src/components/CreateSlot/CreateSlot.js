@@ -42,7 +42,7 @@ const createSlot = () => {
     <>
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-4 text-center">Contact Register</h1>
+          <h1 className="display-4 text-center">Create Slot for mentee</h1>
         </div>
       </div>
       <div className="row">
