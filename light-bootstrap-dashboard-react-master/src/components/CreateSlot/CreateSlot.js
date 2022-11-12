@@ -162,7 +162,6 @@ const MentorSlotPageTable = () => {
             timezone={timezone}
             modelFields={customModelFields}
           >
-            {console.log(posts)}
             <TimelineView />
             <DayView />
             <WeekView />

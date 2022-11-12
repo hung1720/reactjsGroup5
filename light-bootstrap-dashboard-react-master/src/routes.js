@@ -11,6 +11,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-chart-pie-35",
     component: Profile,
     layout: "/admin",
+    
   },
   {
     path: "/search-mentor",

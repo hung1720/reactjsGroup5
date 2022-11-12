@@ -20,7 +20,7 @@ const ListRequestMenteeTable = () => {
     console.log(currentItem);
   };
   const renderHeader = () => {
-    let headerElement = ["name_mentor", "Start", "End", "Status", "Delete"];
+    let headerElement = ["name_mentee", "Start", "End", "Status", "Delete"];
 
     return headerElement.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;
