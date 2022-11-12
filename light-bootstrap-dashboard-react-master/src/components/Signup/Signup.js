@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth, AuthProvider } from "contexts/AuthContext";
 import { Link, useHistory, NavLink } from "react-router-dom";
+import { createEntityAdapter } from "@reduxjs/toolkit";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -33,7 +34,7 @@ export default function Signup() {
 
   return (
     <>
-      <Card style={{ marginTop: "200px", marginLeft: "825px", width: "400px" }}>
+      <Card style={{ marginTop: "125px", marginLeft : "575px",  width: "400px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -66,6 +67,7 @@ export default function Signup() {
           </Form>
         </Card.Body>
       </Card>
+      
     </>
   );
 }

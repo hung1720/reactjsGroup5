@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <>
-      <Card style={{ marginTop: "200px", marginLeft: "825px", width: "400px" }}>
+      <Card style={{ marginTop: "200px", marginLeft : "575px", width: "400px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
