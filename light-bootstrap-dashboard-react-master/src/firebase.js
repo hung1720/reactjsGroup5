@@ -1,10 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
-import { getDatabase } from "firebase/database";
-import { getFirestore } from "@firebase/firestore";
+import "firebase/compat/database";
 
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,28 +13,5 @@ const app = firebase.initializeApp({
 });
 
 export const auth = app.auth();
-export default app;
 
-const provider = new GoogleAuthProvider();
-
-export const signInWithGoogle = () => {
-  //login gmail
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const name = result.user.displayName;
-      const email = result.user.email;
-      const profilePic = result.user.photoURL;
-      const password = result.user.password;
-
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      l;
-      localStorage.setItem("profilePic", profilePic);
-      localStorage.setItem("password", password);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-export const db = getFirestore(app);
+export default app.database().ref();

@@ -1,177 +1,96 @@
-import React, { useEffect, useState } from "react";
-import { guid } from "@progress/kendo-react-common";
-import { timezoneNames } from "@progress/kendo-date-math";
-
-import {
-  IntlProvider,
-  load,
-  LocalizationProvider,
-} from "@progress/kendo-react-intl";
-import {
-  Scheduler,
-  TimelineView,
-  DayView,
-  WeekView,
-  MonthView,
-  AgendaView,
-} from "@progress/kendo-react-scheduler";
-import weekData from "cldr-core/supplemental/weekData.json";
-import currencyData from "cldr-core/supplemental/currencyData.json";
-import likelySubtags from "cldr-core/supplemental/likelySubtags.json";
-import numbers from "cldr-numbers-full/main/es/numbers.json";
-import dateFields from "cldr-dates-full/main/es/dateFields.json";
-import currencies from "cldr-numbers-full/main/es/currencies.json";
-import caGregorian from "cldr-dates-full/main/es/ca-gregorian.json";
-import timeZoneNames from "cldr-dates-full/main/es/timeZoneNames.json";
-
-import axios from "axios";
-load(
-  likelySubtags,
-  currencyData,
-  weekData,
-  numbers,
-  currencies,
-  caGregorian,
-  dateFields,
-  timeZoneNames
-);
-
-const MentorSlotPageTable = () => {
-  const [posts, setPosts] = useState([]); // Get data lịch đã được mentor set sẵn
+import ScheduleMentorPage from "components/ScheduleMentorPage/ScheduleMentorPage";
+import React, { useState, useEffect } from "react";
+import app from "firebase.js";
+const createSlot = () => {
+  var [contactObjects, setContactObjects] = useState({});
+  var [currentId, setCurrentId] = useState("");
 
   useEffect(() => {
-    axios
-      .get("https://6331a1443ea4956cfb635d5f.mockapi.io/api/test/tableSlot")
-      .then((res) => {
-        setPosts(
-          res.data.map((dataItem) => ({
-            ...dataItem,
-            Start: parseAdjust(dataItem.Start),
-            End: parseAdjust(dataItem.End),
-          }))
-        );
-      })
-      .catch((err) => {
-        console.log(err);
+    app.child("user").on("value", (snapshot) => {
+      if (snapshot.val() != null)
+        setContactObjects({
+          ...snapshot.val(),
+        });
+      else setContactObjects({});
+    });
+  }, []); // similar to componentDidMount
+
+  const addOrEdit = (obj) => {
+    if (currentId == "")
+      app.child("user").push(obj, (err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
       });
-  }, []);
-
-  const customModelFields = {
-    id: "TaskID",
-    title: "Title",
-    description: "Description",
-    start: "Start",
-    end: "End",
-    recurrenceRule: "RecurrenceRule",
-    recurrenceId: "RecurrenceID",
-    recurrenceExceptions: "RecurrenceException",
-  };
-  const currentYear = new Date().getFullYear();
-
-  const parseAdjust = (eventDate) => {
-    const date = new Date(eventDate);
-    date.setFullYear(currentYear);
-    return date;
+    else
+      app.child(`user/${currentId}`).set(obj, (err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
+      });
   };
 
-  const randomInt = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
-
-  const displayDate = new Date(Date.UTC(currentYear, 5, 24));
-
-  const timezones = React.useMemo(() => timezoneNames(), []);
-  const locales = [
-    {
-      language: "en-US",
-      locale: "en",
-    },
-    {
-      language: "es-ES",
-      locale: "es",
-    },
-  ];
-  const [view, setView] = React.useState("day");
-  const [date, setDate] = React.useState(displayDate);
-  const [locale, setLocale] = React.useState(locales[0]);
-  const [timezone, setTimezone] = React.useState("Etc/UTC");
-  const [orientation, setOrientation] = React.useState("horizontal");
-  const handleViewChange = React.useCallback(
-    (event) => {
-      setView(event.value);
-    },
-    [setView]
-  );
-  const handleDateChange = React.useCallback(
-    (event) => {
-      setDate(event.value);
-    },
-    [setDate]
-  );
-  const handleLocaleChange = React.useCallback(
-    (event) => {
-      setLocale(event.target.value);
-    },
-    [setLocale]
-  );
-  const handleTimezoneChange = React.useCallback(
-    (event) => {
-      setTimezone(event.target.value);
-    },
-    [setTimezone]
-  );
-  const handleOrientationChange = React.useCallback((event) => {
-    setOrientation(event.target.getAttribute("data-orientation"));
-  }, []);
-  const handleDataChange = React.useCallback(
-    ({ created, updated, deleted }) => {
-      setPosts((old) =>
-        old
-          .filter(
-            (item) =>
-              deleted.find((current) => current.TaskID === item.TaskID) ===
-              undefined
-          )
-          .map(
-            (item) =>
-              updated.find((current) => current.TaskID === item.TaskID) || item
-          )
-          .concat(
-            created.map((item) =>
-              Object.assign({}, item, {
-                TaskID: guid(),
-              })
-            )
-          )
-      );
-    },
-    [setPosts]
-  );
+  const onDelete = (key) => {
+    if (window.confirm("Are you sure to delete this record?")) {
+      debugger;
+      app.child(`user/${key}`).remove((err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
+      });
+    }
+  };
 
   return (
     <>
-      <LocalizationProvider language={locale.language}>
-        <IntlProvider locale={locale.locale}>
-          <Scheduler
-            data={posts}
-            onDataChange={handleDataChange}
-            view={view}
-            onViewChange={handleViewChange}
-            date={date}
-            onDateChange={handleDateChange}
-            editable={true}
-            timezone={timezone}
-            modelFields={customModelFields}
-          >
-            <TimelineView />
-            <DayView />
-            <WeekView />
-            <MonthView />
-            <AgendaView />
-          </Scheduler>
-        </IntlProvider>
-      </LocalizationProvider>
+      <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4 text-center">Contact Register</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-5">
+          <ScheduleMentorPage {...{ addOrEdit, currentId, contactObjects }} />
+        </div>
+        <div className="col-md-7">
+          <table className="table table-borderless table-stripped">
+            <thead className="thead-light">
+              <tr>
+                <th>Name Mentor</th>
+                <th>Phone</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(contactObjects).map((id) => {
+                return (
+                  <tr key={id}>
+                    <td>{contactObjects[id].nameMentor}</td>
+                    <td>{contactObjects[id].phone}</td>
+                    <td>{contactObjects[id].description}</td>
+                    <td>
+                      <a
+                        className="btn text-primary"
+                        onClick={() => {
+                          setCurrentId(id);
+                        }}
+                      >
+                        <i className="fas fa-pencil-alt"></i>
+                      </a>
+                      <a
+                        className="btn text-danger"
+                        onClick={() => {
+                          onDelete(id);
+                        }}
+                      >
+                        <i className="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
   );
 };
-
-export default MentorSlotPageTable;
+export default createSlot;
