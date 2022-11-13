@@ -1,7 +1,6 @@
-import ScheduleMentorPage from "components/ScheduleMentorPage/ScheduleMentorPage";
+import FormStatus from "components/FormStatus/FormStatus";
 import React, { useState, useEffect } from "react";
 import app from "firebase.js";
-
 const createSlot = () => {
   var [contactObjects, setContactObjects] = useState({});
   var [currentId, setCurrentId] = useState("");
@@ -45,12 +44,12 @@ const createSlot = () => {
     <>
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-4 text-center">Create Slot for mentor</h1>
+          <h1 className="display-4 text-center">View Slot for mentee</h1>
         </div>
       </div>
       <div className="row">
         <div className="col-md-5">
-          <ScheduleMentorPage {...{ addOrEdit, currentId, contactObjects }} />
+          <FormStatus {...{ addOrEdit, currentId, contactObjects }} />
         </div>
         <div className="col-md-7">
           <table className="table table-borderless table-stripped">
@@ -59,7 +58,7 @@ const createSlot = () => {
                 <th>Name Mentor</th>
                 <th>Phone</th>
                 <th>Description</th>
-                <th>Status</th>
+                <th>status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -78,15 +77,10 @@ const createSlot = () => {
                           setCurrentId(id);
                         }}
                       >
-                        <i className="fas fa-pencil-alt"></i>
-                      </a>
-                      <a
-                        className="btn text-danger"
-                        onClick={() => {
-                          onDelete(id);
-                        }}
-                      >
-                        <i className="far fa-trash-alt"></i>
+                        <i
+                          className="fa fa-check-circle"
+                          aria-hidden="true"
+                        ></i>
                       </a>
                     </td>
                   </tr>
