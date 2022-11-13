@@ -47,6 +47,7 @@ const ScheduleMentorPage = (props) => {
           name="nameMentor"
           value={values.nameMentor}
           onChange={handleInputChange}
+          required
         />
       </div>
       <div className="form-row">

@@ -1,99 +1,101 @@
-import { useState, useEffect } from "react";
-import { db } from "firebase.js";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
-import { format } from "@progress/kendo-intl";
-function CreateSlot() {
-  const [newName, setNewName] = useState("");
-  const [newMajor, setNewMajor] = useState("");
-  const [newBeginTime, setNewBeginTime] = useState("");
-  const [newEndTime, setNewEndTime] = useState("");
-
-  const [users, setUsers] = useState([]);
-  const userCollectionRef = collection(db, "apointments");
-  const createUser = async () => {
-    await addDoc(userCollectionRef, {
-      nameMentor: newName,
-      major: newMajor,
-      beginTime: newBeginTime,
-      endTime: newEndTime,
-      status: "true",
-    });
-    window.location.reload();
-  };
+import ScheduleMentorPage from "components/ScheduleMentorPage/ScheduleMentorPage";
+import React, { useState, useEffect } from "react";
+import app from "firebase.js";
+const createSlot = () => {
+  var [contactObjects, setContactObjects] = useState({});
+  var [currentId, setCurrentId] = useState("");
+  const a = ["user", "user2"];
+  const b = "user";
 
   useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(userCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUsers();
+    app.child("user").on("value", (snapshot) => {
+      if (snapshot.val() != null)
+        setContactObjects({
+          ...snapshot.val(),
+        });
+      else setContactObjects({});
+    });
   }, []);
 
+  const addOrEdit = (obj) => {
+    if (currentId == "")
+      app.child("user").push(obj, (err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
+      });
+    else
+      app.child(`user/${currentId}`).set(obj, (err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
+      });
+  };
+
+  const onDelete = (key) => {
+    if (window.confirm("Are you sure to delete this record?")) {
+      debugger;
+      app.child(`user/${key}`).remove((err) => {
+        if (err) console.log(err);
+        else setCurrentId("");
+      });
+    }
+  };
+
   return (
-    <div>
-      <input
-        placeholder="Name mentor ...."
-        onChange={(event) => {
-          setNewName(event.target.value);
-        }}
-      />
-      <br />
-      <input
-        placeholder="Major ..."
-        onChange={(event) => {
-          setNewMajor(event.target.value);
-        }}
-      />
-      <br />
-      <input
-        type="datetime-local"
-        placeholder="Begin ..."
-        onChange={(event) => {
-          setNewBeginTime(event.target.value);
-        }}
-      />
-      <br />
-
-      <input
-        type="datetime-local"
-        placeholder="End ..."
-        onChange={(event) => {
-          setNewEndTime(event.target.value);
-        }}
-      />
-
-      <br />
-
-      <button onClick={createUser}>Create Schedule</button>
-
-      <table className="table table-borderless table-stripped">
-        <thead className="thead-light">
-          <tr>
-            <th>Name Mentor</th>
-            <th>Major</th>
-            <th>Begin Time</th>
-            <th>End Time</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => {
-            {
-              console.log(user.beginTime);
-            }
-            return (
+    <>
+      <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4 text-center">View Slot for mentee</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-5">
+          <ScheduleMentorPage {...{ addOrEdit, currentId, contactObjects }} />
+        </div>
+        <div className="col-md-7">
+          <table className="table table-borderless table-stripped">
+            <thead className="thead-light">
               <tr>
-                <td>{user.nameMentor}</td>
-                <td>{user.major}</td>
-                <td>{user.beginTime}</td>
-                <td>{user.endTime}</td>
+                <th>Name Mentor</th>
+                <th>Phone</th>
+                <th>Description</th>
+                <th>status</th>
+                <th>Action</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            </thead>
+            <tbody>
+              {Object.keys(contactObjects).map((id) => {
+                return (
+                  <tr key={id}>
+                    <td>{contactObjects[id].nameMentor}</td>
+                    <td>{contactObjects[id].phone}</td>
+                    <td>{contactObjects[id].description}</td>
+                    <td>{contactObjects[id].status}</td>
+                    <td>
+                      <a
+                        className="btn text-primary"
+                        onClick={() => {
+                          setCurrentId(id);
+                        }}
+                      >
+                        <i className="fas fa-pencil-alt"></i>
+                      </a>
+                      <a
+                        className="btn text-danger"
+                        onClick={() => {
+                          onDelete(id);
+                        }}
+                      >
+                        <i className="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
-}
-export default CreateSlot;
+};
+export default createSlot;
