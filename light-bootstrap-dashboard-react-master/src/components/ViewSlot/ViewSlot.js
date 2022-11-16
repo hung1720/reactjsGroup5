@@ -19,7 +19,7 @@ const createSlot = () => {
 
   const addOrEdit = (obj) => {
     if (currentId == "")
-      app.child("user").push(obj, (err) => {
+      app.child("user").post(obj, (err) => {
         if (err) console.log(err);
         else setCurrentId("");
       });
@@ -48,9 +48,9 @@ const createSlot = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-5">
+        {/* <div className="col-md-5">
           <FormStatus {...{ addOrEdit, currentId, contactObjects }} />
-        </div>
+        </div> */}
         <div className="col-md-7">
           <table className="table table-borderless table-stripped">
             <thead className="thead-light">
