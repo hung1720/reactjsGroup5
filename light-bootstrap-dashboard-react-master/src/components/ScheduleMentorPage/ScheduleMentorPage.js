@@ -5,7 +5,7 @@ const ScheduleMentorPage = (props) => {
     nameMentor: "",
     phone: "",
     description: "",
-    status: "false",
+    status: "pending",
   };
 
   var [values, setValues] = useState(initialFieldValues);
